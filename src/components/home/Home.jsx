@@ -5,13 +5,13 @@ import Features from "./Feature/Features";
 import Shapingd from "./shaping/ Shapingd";
 import Footer from "../Footer/Footer";
 import ExploreCollection from "./exploreCollection/ExploreCollection";
-
+// here 
 export default function Home() {
 	return (
 		<div className="relative overflow-hidden">
 			<Navbar />
 
-			<div className="flex flex-col-reverse md:flex-row w-full mt-[135px] min-h-[500px] md:h-[800px]">
+			<div className="flex flex-col-reverse md:flex-row w-full mt-[115px] min-h-[500px] md:h-[800px]">
 				{/* Image Section */}
 				<div className="w-full md:w-[85%] ">
 					<img

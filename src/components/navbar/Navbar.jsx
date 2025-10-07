@@ -26,13 +26,16 @@ export default function Navbar() {
 		<>
 			{/* NAVBAR */}
 			<div className="fixed w-full top-0 z-50 bg-white border-b-2 border-gray-100">
-				<div className="w-full flex justify-between items-center px-6 py-4">
+				<div className="w-full flex justify-between items-center px-6  pt-4  md:pb-0 pb-2">
 					{/* Left: Logo */}
 					<div
 						className="cursor-pointer font-americana font-extrabold "
 						onClick={() => navigate("/")}>
 						<h2 className="text-4xl bg-gradient-to-r from-[#8a459f] via-[#c1b1c6] to-[#8a459f] bg-clip-text text-transparent">
 							Risky
+							<span className="text-[8px] uppercase tracking-[3px] text-gray-600 mt-[-5px] block group-hover:text-[#8a459f] transition-colors">
+								Proudly Canadian
+							</span>
 						</h2>
 					</div>
 

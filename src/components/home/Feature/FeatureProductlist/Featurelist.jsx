@@ -8,7 +8,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 	}, []);
 
 	return (
-		<div className={`${count === 1 ? "lg:w-10/12" : ""}`}>
+		<div className={`${count === 1 ? "lg:w-10/12" : ""}`} >
 			<li
 				className={`${
 					count === 1 ? " block  md:flex lg:flex gap-5" : "w-full"
@@ -22,12 +22,12 @@ export default function Featurelist({ data, count, show = "yes" }) {
 						}`}>
 						<img
 							src={data.images[0]}
-							alt={data.heading}
+							alt={data.style}
 							className="w-full h-full object-cover object-top img1 z-1 opacity-1"
 						/>
 						<img
 							src={data.images[1]}
-							alt={data.heading}
+							alt={data.style}
 							className="myimg w-full h-full object-cover object-top"
 						/>
 					</div>
@@ -35,7 +35,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 				<div>
 					{show === "yes" && (
 						<>
-							<p className="font-Jost-Medium mt-3 font-lora">{data.heading}</p>
+							<p className="font-Jost-Medium mt-3 font-lora">{data.style}</p>
 							{/* <p className="mt-1 font-poppins ">
 								Rs.{data.price} <span>Regular price</span>
 								<span className="opacity-40"> Rs.{data.price_final}</span>

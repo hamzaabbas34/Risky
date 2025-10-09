@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Featurelist from "./FeatureProductlist/Featurelist";
 import { Link } from "react-router-dom";
 
-export default function Features() {
+export default function Features({data}) {
 	// Number of items initially visible
-	const [data, setData] = useState([]);
-	useEffect(() => {
-		fetch("/data.json") // 👈 fetches from public folder
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				return response.json();
-			})
-			.then((data) => setData(data))
-			.catch((error) => console.error("Error fetching data:", error));
-	}, []);
+	
 	useEffect(() => {
 		AOS.init({
 			duration: 500, // Duration of the animation in milliseconds
@@ -36,7 +25,7 @@ export default function Features() {
 				data-aos-duration="300"
 				className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-20 mb-16 px-4 lg:ps-16 lg:pe-16 md:ps-10 md:pe-10 overflow-x-hidden ">
 				{data.map((item) => (
-					<Featurelist key={item.id} data={item} />
+					<Featurelist key={item.style} data={item} />
 				))}
 			</ul>
 

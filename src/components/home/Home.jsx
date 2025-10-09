@@ -5,11 +5,26 @@ import Features from "./Feature/Features";
 import Shapingd from "./shaping/ Shapingd";
 import Footer from "../Footer/Footer";
 import ExploreCollection from "./exploreCollection/ExploreCollection";
-// here 
+import { useEffect, useState } from "react";
+// here
 export default function Home() {
+	const [data, setData] = useState([]);
+	useEffect(() => {
+		fetch("/risky.json") // 👈 fetches from public folder
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				return response.json();
+			})
+			.then((data) => setData(data.products))
+			.catch((error) => console.error("Error fetching data:", error));
+	}, []);
+
+	console.log(data);
 	return (
 		<div className="relative overflow-hidden">
-			<Navbar />
+			<Navbar data={data} />
 
 			<div className="flex flex-col-reverse md:flex-row w-full mt-[115px] min-h-[500px] md:h-[800px]">
 				{/* Image Section */}
@@ -25,7 +40,7 @@ export default function Home() {
 				<div className="w-full md:w-[15%] flex justify-start md:justify-center items-center bg-white md:h-[800px] h-auto py-5  md:py-0 text-start">
 					{/* Mobile (two lines, not rotated) */}
 					<span className="block md:hidden  text-[50px] font-lora font-extrabold text-[#8a459f] tracking-wide leading-[45px] tr ">
-						NEW <br /> ARRIVAL 
+						NEW <br /> ARRIVAL
 					</span>
 
 					{/* Desktop (one line, rotated) */}
@@ -41,14 +56,14 @@ export default function Home() {
 		md:leading-1
 
       ">
-						NEW ARRIVAL 
+						NEW ARRIVAL
 					</span>
 				</div>
 			</div>
 
-			<ExploreCollection />
-			<Collections />
-			<Features />
+			<ExploreCollection data={data} />
+			<Collections data={data} />
+			<Features data={data} />
 			<Shapingd />
 			<Footer />
 		</div>

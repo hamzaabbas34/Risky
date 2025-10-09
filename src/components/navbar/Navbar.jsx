@@ -1,27 +1,18 @@
 import { Icon } from "@iconify/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../assets/images/logo-1759675839376.png";
 
-export default function Navbar() {
+export default function Navbar({ data }) {
 	const navigate = useNavigate();
 	const [showSearch, setShowSearch] = useState(false);
 	const [showMenu, setShowMenu] = useState(false);
 	const [search, setSearch] = useState("");
-	const [data, setData] = useState([]);
-
-	// ✅ Fetch local data.json
-	useEffect(() => {
-		fetch("/data.json")
-			.then((res) => res.json())
-			.then((data) => setData(data))
-			.catch((err) => console.error("Error fetching data:", err));
-	}, []);
+	console.log("sdfasdf", data);
 
 	const filteredData = data.filter((item) =>
-		item.heading.toLowerCase().includes(search.toLowerCase())
+		item.style?.toLowerCase().includes(search?.toLowerCase())
 	);
-
 	return (
 		<>
 			{/* NAVBAR */}
@@ -194,9 +185,9 @@ export default function Navbar() {
 						{/* Filtered Results */}
 						<div className="mt-4 max-h-64 overflow-y-auto">
 							{search.length > 0 && filteredData.length > 0 ? (
-								filteredData.map((item) => (
+								filteredData.map((item, index) => (
 									<div
-										key={item.id}
+										key={index}
 										className="flex items-center gap-3 border-b py-2 px-1 cursor-pointer hover:bg-gray-50 transition"
 										onClick={() => {
 											setShowSearch(false);

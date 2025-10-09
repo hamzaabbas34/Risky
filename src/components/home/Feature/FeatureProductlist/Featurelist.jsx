@@ -8,7 +8,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 	}, []);
 
 	return (
-		<div className={`${count === 1 ? "lg:w-10/12" : ""}`} >
+		<div className={`${count === 1 ? "lg:w-10/12" : ""}`}>
 			<li
 				className={`${
 					count === 1 ? " block  md:flex lg:flex gap-5" : "w-full"

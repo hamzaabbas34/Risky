@@ -6,8 +6,8 @@ import Shapingd from "./shaping/ Shapingd";
 import Footer from "../Footer/Footer";
 import ExploreCollection from "./exploreCollection/ExploreCollection";
 import { useEffect, useState } from "react";
-import video2 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.49.mp4";
-import video1 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.51.mp4";
+import video1 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.49.mp4";
+import video2 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.51.mp4";
 // here
 export default function Home() {
 	const [data, setData] = useState([]);
@@ -30,7 +30,12 @@ export default function Home() {
 
 			<div className="flex flex-col-reverse md:flex-row w-full mt-[150px]  md:h-auto">
 				{/* Image Section */}
-				<div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-0">
+				<div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-3 gap-2">
+					<img
+						src="https://demo.riskydress.com/images/2026/Risky/RS4%20%281%29.jpg"
+						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top"
+						alt=""
+					/>
 					<video
 						src={video1}
 						autoPlay

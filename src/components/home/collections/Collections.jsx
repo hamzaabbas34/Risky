@@ -100,7 +100,7 @@ export default function Collections({ data }) {
 					<div className="sticky top-8 space-y-8">
 						<div>
 							<h3 className="font-serif text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight">
-								Premiere Evening Collection
+								Premiere Gowns Collection
 							</h3>
 							<p className="font-sans text-lg text-gray-600 leading-relaxed mb-6">
 								Experience unparalleled elegance with our 2025 Premiere

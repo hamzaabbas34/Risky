@@ -167,6 +167,11 @@ export default function Navbar({ data }) {
 							Contact Us
 						</Link>
 					</li>
+					<Link
+						to="https://market.azuredress.com/"
+						className="flex items-center gap-1 bg-[#8a459f]  text-white px-2 py-3  hover:text-gray-300 transition">
+						<span className=" font-medium ">RETAILER LOGIN</span>
+					</Link>
 				</ul>
 			</div>
 

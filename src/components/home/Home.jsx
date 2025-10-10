@@ -6,6 +6,8 @@ import Shapingd from "./shaping/ Shapingd";
 import Footer from "../Footer/Footer";
 import ExploreCollection from "./exploreCollection/ExploreCollection";
 import { useEffect, useState } from "react";
+import video1 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.49.mp4";
+import video2 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.51.mp4";
 // here
 export default function Home() {
 	const [data, setData] = useState([]);
@@ -26,14 +28,24 @@ export default function Home() {
 		<div className="relative overflow-hidden">
 			<Navbar data={data} />
 
-			<div className="flex flex-col-reverse md:flex-row w-full mt-[115px] min-h-[500px] md:h-[800px]">
+			<div className="flex flex-col-reverse md:flex-row w-full mt-[115px]  md:h-auto">
 				{/* Image Section */}
-				<div className="w-full md:w-[85%] ">
-					<img
-						src="https://cro-theme-elemento-terra.myshopify.com/cdn/shop/files/GENERA_1.jpg?v=1742458897&width=2560"
-						alt="New Arrival"
-						className="w-full  h-[400px] md:h-[800px] object-cover object-top"
-					/>
+				<div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-0">
+					<video
+						src={video1}
+						autoPlay
+						loop
+						muted
+						playsInline
+						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top "></video>
+
+					<video
+						src={video2}
+						autoPlay
+						loop
+						muted
+						playsInline
+						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top"></video>
 				</div>
 
 				{/* Text Section */}

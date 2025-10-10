@@ -11,7 +11,7 @@ function Shapingd() {
 		});
 	}, []);
 	return (
-		<div className="grid grid-cols-1 px-16 gap-2 my-10  md:grid-cols-2  lg:grid-cols-4 md:gap-10  overflow-x-hidden">
+		<div className="grid grid-cols-1 px-16 gap-2 my-10  md:grid-cols-2  lg:grid-cols-3 md:gap-10  overflow-x-hidden">
 			<div className="text-center  data-aos=" fade-left>
 				<div className="flex justify-center items-center my-4">
 					<img
@@ -43,20 +43,8 @@ function Shapingd() {
 					"Unbeatable Deals Await - Discover Our Best Price Offers Today!"
 				</p>
 			</div>
-			<div className="text-center" data-aos="fade-left">
-				<div className="flex justify-center items-center my-4">
-					<Icon
-						icon="ic:baseline-gpp-good"
-						width="45"
-						height="45"
-						
-					/>
-				</div>
-				<h1 className="font-Jost-Medium  text-2xl my-1 "> Secure Payments</h1>
-				<p className="font-Jost-Regular  opacity-60 ">
-					"Shop with Confidence - Your Payments, Our Secure Guarantee."
-				</p>
-			</div>
+			
+			
 		</div>
 	);
 }

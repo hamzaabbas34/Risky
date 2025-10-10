@@ -3,83 +3,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../assets/images/logo-1759675839376.png";
 
-const DropdownMenu = ({ title, options, isMobile = false }) => {
-	const [isOpen, setIsOpen] = useState(false);
-
-	if (isMobile) {
-		// ✅ Mobile version (collapsible)
-		return (
-			<li className="font-poppins font-medium text-[17px]">
-				<button
-					onClick={() => setIsOpen(!isOpen)}
-					className="flex justify-between items-center w-full px-3 py-2 text-gray-800 hover:text-[#8a459f] transition-colors duration-200 uppercase tracking-wide">
-					{title}
-					<Icon
-						icon={
-							isOpen
-								? "heroicons:chevron-up-20-solid"
-								: "heroicons:chevron-down-20-solid"
-						}
-						className="ml-1 h-4 w-4 transition-transform"
-					/>
-				</button>
-
-				{isOpen && (
-					<ul className="pl-8 text-[15px]">
-						{options.map((option, index) => (
-							<li key={index}>
-								<Link
-									to={option.value}
-									className="block py-2 hover:text-[#8a459f] transition-colors duration-200">
-									{option.label}
-								</Link>
-							</li>
-						))}
-					</ul>
-				)}
-			</li>
-		);
-	}
-
-	// ✅ Desktop version (hover)
-	return (
-		<li className="relative group font-poppins font-medium text-[16px]">
-			<span className="flex items-center cursor-pointer py-2 px-3 text-gray-800 hover:text-[#8a459f] transition-colors duration-200 uppercase tracking-wide">
-				{title}
-				<Icon
-					icon="heroicons:chevron-down-20-solid"
-					className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
-				/>
-			</span>
-
-			<div className="absolute left-1/2 -translate-x-1/2 mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out">
-				<div className="py-1">
-					{options.map((option, index) => (
-						<Link
-							key={index}
-							to={option.value}
-							className="block px-4 py-3 text-sm hover:bg-gray-50 hover:text-[#8a459f] w-full text-center border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-							{option.label}
-						</Link>
-					))}
-				</div>
-			</div>
-		</li>
-	);
-};
-
 export default function Navbar({ data }) {
 	const navigate = useNavigate();
 	const [showSearch, setShowSearch] = useState(false);
 	const [showMenu, setShowMenu] = useState(false);
 	const [search, setSearch] = useState("");
 
-	const promOptions = [
-		{ label: "2025 Collection", value: "/prom/2025" },
-		{ label: "2026 Collection", value: "/prom/2026" },
-	];
-
-	const filteredData = data.filter((item) =>
+	const filteredData = data?.filter((item) =>
 		item.style?.toLowerCase().includes(search?.toLowerCase())
 	);
 
@@ -87,44 +17,70 @@ export default function Navbar({ data }) {
 		<>
 			{/* ✅ NAVBAR */}
 			<div className="fixed w-full top-0 z-50 bg-white border-b-2 border-gray-100">
-				<div className="w-full flex justify-between items-center px-6 pt-4 md:pb-0 pb-2">
-					{/* Logo */}
+				<div
+					className={`flex justify-between items-center bg-[#8a459f] w-full px-5 py-3 transition-all duration-500 `}>
+					{/* ✅ Mobile Menu Icon */}
+					<button
+						onClick={() => setShowMenu(true)}
+						className="text-white hover:text-gray-300 transition lg:hidden">
+						<Icon icon="mdi:menu" width="28" height="28" />
+					</button>
+
+					{/* Social Media Icons */}
+					<div className="hidden md:flex gap-3 items-center">
+						<Icon
+							icon="akar-icons:facebook-fill"
+							width="20"
+							height="20"
+							className="text-white hover:text-gray-300 transition"
+						/>
+						<Icon
+							icon="ri:instagram-fill"
+							width="22"
+							height="22"
+							className="text-white hover:text-gray-300 transition"
+						/>
+						<Icon
+							icon="iconoir:tiktok-solid"
+							width="22"
+							height="22"
+							className="text-white hover:text-gray-300 transition"
+						/>
+					</div>
+
+					{/* User Actions */}
+					<div className="flex items-center gap-3">
+						<Link
+							to="https://market.riskydress.com/"
+							className="flex items-center gap-1 text-white hover:text-gray-300 transition">
+							<Icon icon="qlementine-icons:user-16" width="20" height="20" />
+							<span className="text-sm font-medium">RETAILER LOGIN</span>
+						</Link>
+
+						<button
+							onClick={() => setShowSearch(true)}
+							className="text-white hover:text-gray-300 transition md:block hidden">
+							<Icon icon="bx:search-alt" width="24" height="24" />
+						</button>
+					</div>
+				</div>
+
+				{/* ✅ Logo Section */}
+				<div className="w-full flex justify-center items-center px-6 pt-4 md:pb-0 pb-2">
 					<div
 						className="cursor-pointer font-americana font-extrabold"
 						onClick={() => navigate("/")}>
-						<h2 className="text-4xl bg-gradient-to-r from-[#8a459f] via-[#c1b1c6] to-[#8a459f] bg-clip-text text-transparent">
+						<h2 className="text-4xl text-center bg-gradient-to-r from-[#8a459f] via-[#c1b1c6] to-[#8a459f] bg-clip-text text-transparent">
 							Risky
 							<span className="text-[8px] uppercase tracking-[3px] text-gray-600 mt-[-5px] block">
 								Proudly Canadian
 							</span>
 						</h2>
 					</div>
-
-					{/* Icons */}
-					<div className="flex items-center gap-4">
-						{/* Search */}
-						<button onClick={() => setShowSearch(true)}>
-							<Icon icon="mingcute:search-3-line" width="28" height="28" />
-						</button>
-
-						{/* User */}
-						<Icon icon="qlementine-icons:user-16" width="28" height="28" />
-
-						{/* Hamburger */}
-						<button
-							onClick={() => setShowMenu(true)}
-							className="lg:hidden block">
-							<Icon
-								icon="heroicons-outline:menu-alt-3"
-								width="30"
-								height="30"
-							/>
-						</button>
-					</div>
 				</div>
 
 				{/* ✅ Desktop Menu */}
-				<ul className="hidden lg:flex font-poppins items-center gap-8 px-8 text-black font-medium text-base py-3">
+				<ul className="hidden lg:flex font-poppins items-center justify-center gap-8 px-8 text-black font-medium text-base py-3">
 					<li>
 						<Link
 							to="/"
@@ -132,7 +88,13 @@ export default function Navbar({ data }) {
 							Home
 						</Link>
 					</li>
-					<DropdownMenu title="PROM" options={promOptions} />
+					<li>
+						<Link
+							to="/"
+							className="hover:text-[#8a459f] transition-colors duration-200">
+							Gowns
+						</Link>
+					</li>
 					<li>
 						<Link
 							to="/about"
@@ -181,10 +143,14 @@ export default function Navbar({ data }) {
 							Home
 						</Link>
 					</li>
-
-					{/* ✅ Mobile Dropdown */}
-					<DropdownMenu title="PROM" options={promOptions} isMobile={true} />
-
+					<li>
+						<Link
+							to="/"
+							onClick={() => setShowMenu(false)}
+							className="block px-3 py-2 hover:text-[#8a459f] transition-colors duration-200">
+							Gowns
+						</Link>
+					</li>
 					<li>
 						<Link
 							to="/about"

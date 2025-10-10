@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
 
 export default function Footer() {
 	useEffect(() => {
@@ -13,30 +12,7 @@ export default function Footer() {
 		});
 	}, []);
 
-	const [openMenu, setOpenMenu] = useState(null);
-
-	const toggleMenu = (menu) => {
-		setOpenMenu(openMenu === menu ? null : menu);
-	};
-
-	const promOptions = [
-		{ label: "2025 Collection", value: "/prom/2025" },
-		{ label: "2026 Collection", value: "/prom/2026" },
-	];
-
 	// Helper function to apply the transition classes
-	const getDropdownClasses = (menuName) => {
-		// Base classes for transition and hidden content
-		const baseClasses =
-			"ml-4 mt-2 flex flex-col gap-1 overflow-hidden transition-all duration-300 ease-in-out";
-
-		// Determine the max-height based on the open state
-		// A reasonable max-height is needed for the slide effect
-		const isOpen = openMenu === menuName;
-		const heightClass = isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0";
-
-		return `${baseClasses} ${heightClass}`;
-	};
 
 	return (
 		<div className="w-full bg-[#8a459f] overflow-x-hidden py-10 border-b">
@@ -73,32 +49,13 @@ export default function Footer() {
 					</p>
 
 					{/* Prom Dropdown */}
-					<div className="font-poppins">
-						<button
-							onClick={() => toggleMenu("prom")}
-							className="flex justify-between items-center w-full py-1 px-2 rounded transition-all duration-300 hover:bg-white hover:bg-opacity-25 hover:px-2">
-							Prom{" "}
-							<span>
-								{openMenu === "prom" ? (
-									<Icon icon="ep:arrow-up" width="20" height="20" />
-								) : (
-									<Icon icon="ep:arrow-down" width="20" height="20" />
-								)}
-							</span>
-						</button>
-						{/* --- Changed Section for Transition --- */}
-						<div className={getDropdownClasses("prom")}>
-							{promOptions.map((item) => (
-								<Link
-									key={item.value}
-									to={item.value}
-									className="py-1 px-2 rounded transition-all duration-300 hover:bg-white hover:bg-opacity-25 hover:px-3">
-									{item.label}
-								</Link>
-							))}
-						</div>
-						{/* --- End Changed Section --- */}
-					</div>
+					<p className="font-poppins">
+						<Link
+							to="/"
+							className="block py-1 px-2 rounded transition-all duration-300 hover:bg-white hover:bg-opacity-25 hover:px-2">
+							Gowns
+						</Link>
+					</p>
 				</div>
 
 				{/* Contact Section */}

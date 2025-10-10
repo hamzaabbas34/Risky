@@ -14,7 +14,7 @@ export default function ExploreCollection({ data }) {
 			</div>
 
 			{/* Image Grid */}
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full  max-w-[1400px] px-8 ">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full  max-w-[1400px] md:px-8 px-0 ">
 				{data.slice(0, 4).map((item, index) => (
 					<div
 						key={index}

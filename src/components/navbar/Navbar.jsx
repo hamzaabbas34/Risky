@@ -59,7 +59,7 @@ export default function Navbar({ data }) {
 
 						<button
 							onClick={() => setShowSearch(true)}
-							className="text-white hover:text-gray-300 transition md:block hidden">
+							className="text-white hover:text-gray-300 transition md:block ">
 							<Icon icon="bx:search-alt" width="24" height="24" />
 						</button>
 					</div>
@@ -90,7 +90,7 @@ export default function Navbar({ data }) {
 					</li>
 					<li>
 						<Link
-							to="/"
+							to="/Gowns"
 							className="hover:text-[#8a459f] transition-colors duration-200">
 							Gowns
 						</Link>
@@ -168,7 +168,7 @@ export default function Navbar({ data }) {
 						</Link>
 					</li>
 					<Link
-						to="https://market.azuredress.com/"
+						to="https://market.riskydress.com/"
 						className="flex items-center gap-1 bg-[#8a459f]  text-white px-2 py-3  hover:text-gray-300 transition">
 						<span className=" font-medium ">RETAILER LOGIN</span>
 					</Link>

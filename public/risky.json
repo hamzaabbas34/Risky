@@ -2,149 +2,144 @@
 	"brand": "RISKY",
 	"products": [
 		{
+			"brand": "AZURE",
 			"style": "RS01",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS1%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS1%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS1%20%283%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS1%20%281%29.jpg", "RS1%20%282%29.jpg", "RS1%20%283%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS02",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS2%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS2%20%283%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS2%20%284%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS2%20%282%29.jpg", "RS2%20%283%29.jpg", "RS2%20%284%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS03",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS3%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS3%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS3%20%283%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS3%20%281%29.jpg", "RS3%20%282%29.jpg", "RS3%20%283%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS04",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
+			"year": 2026,
 			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS4%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS4%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS4%20%283%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS4%20%284%29.jpg"
+				"RS4%20%281%29.jpg",
+				"RS4%20%282%29.jpg",
+				"RS4%20%283%29.jpg",
+				"RS4%20%284%29.jpg"
 			]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS05",
-			"price": "$239.00",
-			"packagePrice": "$225.00",
+			"wholesalePrice": "CAD 239.00",
+			"quantity3Plus": "CAD 225.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS5%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS5%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS5%20%283%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS5%20%281%29.jpg", "RS5%20%282%29.jpg", "RS5%20%283%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS06",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS6%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS6%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS6%20%283%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS6%20%281%29.jpg", "RS6%20%282%29.jpg", "RS6%20%283%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS09",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS9%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS9%20%282%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS9%20%281%29.jpg", "RS9%20%282%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS10",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS10%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS10%20%282%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS10%20%281%29.jpg", "RS10%20%282%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS11",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
-			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS11%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS11%20%282%29.jpg"
-			]
+			"year": 2026,
+			"images": ["RS11%20%281%29.jpg", "RS11%20%282%29.jpg"]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS12",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
+			"year": 2026,
 			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS12%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS12%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS12%20%283%29.jpg"
+				"RS12%20%281%29.jpg",
+				"RS12%20%282%29.jpg",
+				"RS12%20%283%29.jpg"
 			]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS13",
-			"price": "$219.00",
-			"packagePrice": "$199.00",
+			"wholesalePrice": "CAD 219.00",
+			"quantity3Plus": "CAD 199.00",
 			"colors": ["CRANBERRY", "BLACK", "RED", "ROYAL", "NAVY", "EMERALD"],
 			"sizeRange": "0-16",
+			"year": 2026,
 			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%283%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%284%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%286%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS13%20%287%29.jpg"
+				"RS13%20%281%29.jpg",
+				"RS13%20%282%29.jpg",
+				"RS13%20%283%29.jpg",
+				"RS13%20%284%29.jpg",
+				"RS13%20%286%29.jpg",
+				"RS13%20%287%29.jpg"
 			]
 		},
 		{
+			"brand": "AZURE",
 			"style": "RS14",
-			"price": "$259.00",
-			"packagePrice": "$245.00",
+			"wholesalePrice": "CAD 259.00",
+			"quantity3Plus": "CAD 245.00",
 			"colors": ["PINE", "RED"],
 			"sizeRange": "0-16",
+			"year": 2026,
 			"images": [
-				"https://demo.riskydress.com/images/2026/Risky/RS14%20%281%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS14%20%282%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS14%20%283%29.jpg",
-				"https://demo.riskydress.com/images/2026/Risky/RS14%20%284%29.jpg"
+				"RS14%20%281%29.jpg",
+				"RS14%20%282%29.jpg",
+				"RS14%20%283%29.jpg",
+				"RS14%20%284%29.jpg"
 			]
 		}
 	]

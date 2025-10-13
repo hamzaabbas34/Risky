@@ -30,12 +30,7 @@ export default function Home() {
 
 			<div className="flex flex-col-reverse md:flex-row w-full mt-[150px]  md:h-auto">
 				{/* Image Section */}
-				<div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-3 gap-2">
-					<img
-						src="https://demo.riskydress.com/images/2026/Risky/RS4%20%281%29.jpg"
-						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top"
-						alt=""
-					/>
+				<div className="w-full md:w-[85%] grid grid-cols-1 lg:grid-cols-3  md:grid-cols-2 gap-2">
 					<video
 						src={video1}
 						autoPlay
@@ -44,6 +39,11 @@ export default function Home() {
 						playsInline
 						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top "></video>
 
+					<img
+						src="https://demo.riskydress.com/images/2026/Risky/RS13%20%281%29.jpg"
+						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top lg:block hidden "
+						alt=""
+					/>
 					<video
 						src={video2}
 						autoPlay

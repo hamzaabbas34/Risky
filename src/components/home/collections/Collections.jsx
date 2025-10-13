@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import { Icon } from "@iconify/react";
@@ -103,7 +101,7 @@ export default function Collections({ data }) {
 								Premiere Gowns Collection
 							</h3>
 							<p className="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-								Experience unparalleled elegance with our 2025 Premiere
+								Experience unparalleled elegance with our 2026 Premiere
 								Collection. Each piece is meticulously crafted with premium
 								fabrics and attention to detail, designed for those who
 								appreciate timeless sophistication.
@@ -144,15 +142,24 @@ export default function Collections({ data }) {
 							className="flex gap-6 lg:gap-8 overflow-x-auto scroll-smooth no-scrollbar pb-6"
 							onScroll={updateArrowVisibility}>
 							{collections.map((collection, index) => (
-								<div
+								<Link
+									to={`/product/id/${collection.style}`}
+									state={{
+										product: collection,
+										url: `https://demo.riskydress.com/images/${collection.year}/Risky/`,
+									}}
 									key={collection.id || index}
-									className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[380px] group cursor-pointer"
+									className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[380px]
+									group cursor-pointer"
 									data-aos="fade-left"
 									data-aos-delay={index * 100}>
 									{/* Image */}
 									<div className="relative overflow-hidden rounded-2xl shadow-lg mb-4 bg-gray-100">
 										<img
-											src={collection.images?.[0]}
+											src={
+												"https://demo.riskydress.com/images/2026/Risky/" +
+												collection.images?.[0]
+											}
 											alt={collection.style}
 											className="w-full h-[400px] lg:h-[480px] object-cover transition-all duration-700 group-hover:scale-105"
 										/>
@@ -187,7 +194,6 @@ export default function Collections({ data }) {
 											</span>
 										</div>
 									</div>
-
 									{/* Info */}
 									<div className="text-center px-2">
 										<h4 className="font-serif text-xl text-gray-900 mb-2">
@@ -197,7 +203,7 @@ export default function Collections({ data }) {
 											{collection.description}
 										</p>
 									</div>
-								</div>
+								</Link>
 							))}
 						</div>
 

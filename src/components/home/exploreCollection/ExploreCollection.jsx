@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ExploreCollection({ data }) {
 	return (
@@ -16,11 +17,19 @@ export default function ExploreCollection({ data }) {
 			{/* Image Grid */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full  max-w-[1400px] md:px-8 px-0 ">
 				{data.slice(0, 4).map((item, index) => (
-					<div
+					<Link
+						to={`/product/id/${item.style}`}
+						state={{
+							product: item,
+							url: `https://demo.riskydress.com/images/${item.year}/Risky/`,
+						}}
 						key={index}
 						className="relative group overflow-hidden  shadow-md cursor-pointer ">
 						<img
-							src={item.images[0]}
+							src={
+								"https://demo.riskydress.com/images/2026/Risky/" +
+								item.images[0]
+							}
 							alt={item.style}
 							className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110 object-center  "
 						/>
@@ -29,7 +38,7 @@ export default function ExploreCollection({ data }) {
 								{item.style}
 							</span>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>

@@ -13,7 +13,12 @@ export default function Featurelist({ data, count, show = "yes" }) {
 				className={`${
 					count === 1 ? " block  md:flex lg:flex gap-5" : "w-full"
 				}`}>
-				<Link to={`/product/${data.id}`}>
+				<Link
+					to={`/product/id/${data.style}`}
+					state={{
+						product: data,
+						url: `https://demo.riskydress.com/images/${data.year}/Risky/`,
+					}}>
 					<div
 						className={`relative ${
 							count === 1
@@ -21,12 +26,18 @@ export default function Featurelist({ data, count, show = "yes" }) {
 								: "w-full aspect-[4/5]"
 						}`}>
 						<img
-							src={data.images[0]}
+							src={
+								"https://demo.riskydress.com/images/2026/Risky/" +
+								data.images[0]
+							}
 							alt={data.style}
 							className="w-full h-full object-cover object-top img1 z-1 opacity-1"
 						/>
 						<img
-							src={data.images[1]}
+							src={
+								"https://demo.riskydress.com/images/2026/Risky/" +
+								data.images[1]
+							}
 							alt={data.style}
 							className="myimg w-full h-full object-cover object-top"
 						/>

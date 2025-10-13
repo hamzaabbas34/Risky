@@ -40,7 +40,7 @@ export default function Home() {
 						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top "></video>
 
 					<img
-						src="https://demo.riskydress.com/images/2026/Risky/RS13%20%281%29.jpg"
+						src="https://demo.riskydress.com/images/2026/Risky/RS13%20%283%29.jpg"
 						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top lg:block hidden "
 						alt=""
 					/>

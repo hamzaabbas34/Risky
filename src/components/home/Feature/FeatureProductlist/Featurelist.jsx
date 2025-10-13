@@ -31,7 +31,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 								data.images[0]
 							}
 							alt={data.style}
-							className="w-full h-full object-cover object-top img1 z-1 opacity-1"
+							className="w-full h-full object-cover  object-top img1 z-1 opacity-1"
 						/>
 						<img
 							src={
@@ -39,7 +39,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 								data.images[1]
 							}
 							alt={data.style}
-							className="myimg w-full h-full object-cover object-top"
+							className="myimg w-full h-full object-cover  object-top"
 						/>
 					</div>
 				</Link>

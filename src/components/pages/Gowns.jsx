@@ -95,7 +95,7 @@ export default function Gowns() {
 									<img
 										src={`https://demo.riskydress.com/images/${item.year}/Risky/${item.images?.[0]}`}
 										alt={item.style}
-										className="w-full h-[440px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+										className="w-full h-[440px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 										<div className="p-4 w-full text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">

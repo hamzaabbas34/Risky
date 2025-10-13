@@ -161,7 +161,7 @@ export default function Collections({ data }) {
 												collection.images?.[0]
 											}
 											alt={collection.style}
-											className="w-full h-[400px] lg:h-[480px] object-cover transition-all duration-700 group-hover:scale-105"
+											className="w-full h-[400px] lg:h-[480px] object-cover transition-all object-top  duration-700 group-hover:scale-105"
 										/>
 
 										{/* Overlay */}

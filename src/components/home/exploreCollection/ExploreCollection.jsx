@@ -31,7 +31,7 @@ export default function ExploreCollection({ data }) {
 								item.images[0]
 							}
 							alt={item.style}
-							className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110 object-center  "
+							className="w-full h-[500px] object-cover  object-top transition-transform duration-500 group-hover:scale-110   "
 						/>
 						<div className="absolute inset-0 bg-[#8a459f]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
 							<span className="text-white text-xl font-semibold font-poppins tracking-wide">

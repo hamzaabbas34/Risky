@@ -227,7 +227,7 @@ export default function Navbar({ data }) {
 										<img
 											src={item.images[0]}
 											alt={item.style}
-											className="w-16 h-16 object-cover rounded"
+											className="w-16 h-16 object-cover object-top rounded"
 										/>
 										<div>
 											<h3 className="font-semibold text-gray-800">

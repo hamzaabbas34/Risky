@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "aos/dist/aos.css";
 import "./collection.css";
@@ -10,6 +10,7 @@ export default function Collections({ data }) {
 	const scrollContainerRef = useRef(null);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
 	const [showRightArrow, setShowRightArrow] = useState(true);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		AOS.init({
@@ -77,11 +78,6 @@ export default function Collections({ data }) {
 		<div className="mb-28 px-4 md:px-12 lg:px-20">
 			{/* Section Header */}
 			<div className="text-center mb-16" data-aos="fade-up">
-				<div className="inline-block mb-4">
-					<span className="text-sm font-poppins font-medium text-gray-500 uppercase tracking-wider">
-						Curated Selection
-					</span>
-				</div>
 				<h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4">
 					Signature Collections
 				</h2>
@@ -102,7 +98,7 @@ export default function Collections({ data }) {
 							</h3>
 							<p className="font-sans text-lg text-gray-600 leading-relaxed mb-6">
 								Experience unparalleled elegance with our 2026 Premiere
-								Collection. Each piece is meticulously crafted with premium
+								Collection. Each gown is meticulously crafted with premium
 								fabrics and attention to detail, designed for those who
 								appreciate timeless sophistication.
 							</p>
@@ -121,7 +117,9 @@ export default function Collections({ data }) {
 							</div>
 						</div>
 
-						<button className="group relative inline-flex items-center px-8 py-4 bg-[#8a459f] text-white font-sans font-medium text-lg rounded-lg hover:bg-[#7a3b8d] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+						<button
+							onClick={() => navigate("/Gowns")}
+							className="group relative inline-flex items-center px-8 py-4 bg-[#8a459f] text-white font-sans font-medium text-lg rounded-lg hover:bg-[#7a3b8d] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
 							Explore Collection
 							<Icon
 								icon="heroicons:arrow-long-right-20-solid"

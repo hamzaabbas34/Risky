@@ -72,7 +72,7 @@ export default function Gowns() {
 
 	return (
 		<div className="">
-			<Navbar />
+			<Navbar data={data.products} />
 			<h1 className="mt-[200px] text-5xl font-extrabold font-americana text-center mb-16 text-white bg-[#8a459f] bg-opacity-80 py-20  tracking-tight">
 				Gowns Collection <span style={{ color: "white" }}></span>
 			</h1>
@@ -242,8 +242,8 @@ export default function Gowns() {
 			) : (
 				<div className="text-center text-gray-600 mt-20 p-10 bg-gray-50 rounded-xl">
 					<p className="text-xl font-semibold mb-8">No data available.</p>
-					<a
-						href="/Gowns"
+					<Link
+						to="/Gowns"
 						className="inline-block px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-300 shadow-lg"
 						style={{ backgroundColor: PRIMARY_COLOR, color: "white" }}
 						onMouseOver={(e) =>
@@ -253,7 +253,7 @@ export default function Gowns() {
 							(e.currentTarget.style.backgroundColor = PRIMARY_COLOR)
 						}>
 						Back to Collections
-					</a>
+					</Link>
 				</div>
 			)}
 			<Footer />

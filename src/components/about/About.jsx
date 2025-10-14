@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer";
 export default function AboutPage() {
 	return (
 		<>
-			<Navbar />
+			<Navbar linkName="about" />
 			<div className=" md:mt-[180px] mt-[130px] h-fit      bg-gray-50 py-12 px-4 sm:px-8 lg:px-20">
 				<div className="max-w-5xl mx-auto text-center">
 					{/* About Section */}
@@ -56,8 +56,8 @@ export default function AboutPage() {
 								How can I place an order?
 							</h3>
 							<p className="text-gray-600 text-sm sm:text-base">
-								You can place an order directly through our online store by
-								selecting your gown and following the checkout process.
+								You can place an order directly through our online portal by
+								selecting your gown and following the process.
 							</p>
 						</div>
 					</div>

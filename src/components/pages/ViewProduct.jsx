@@ -95,7 +95,7 @@ export default function ViewProduct() {
 						{/* Main Image with Zoom Effect */}
 						<div
 							className="relative overflow-hidden rounded-xl shadow-lg border border-gray-100 bg-gray-50"
-							style={{ height: "70vh", minHeight: "600px" }}>
+							style={{ height: "70vh", minHeight: "900px" }}>
 							{/* Image Container for Mouse Events */}
 							<div
 								ref={imageRef}
@@ -108,7 +108,7 @@ export default function ViewProduct() {
 								<img
 									src={url + product.images[selectedImage]}
 									alt={product.style}
-									className="w-full h-full object-cover  object-top   transition-opacity duration-500"
+									className="w-full h-[900px] object-cover  object-top   transition-opacity duration-500"
 								/>
 
 								{/* Zoom Lens/Overlay */}

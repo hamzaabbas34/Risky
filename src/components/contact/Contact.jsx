@@ -58,7 +58,7 @@ export default function ContactPage() {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar linkName="contact" />
 			<div className=" mt-[180px] min-h-screen bg-gray-100 py-20 px-4 sm:px-6 lg:px-10">
 				<div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 					{/* Left Section - Contact Form (Sleek, White Card) */}
@@ -172,7 +172,6 @@ export default function ContactPage() {
 							<h2 className="text-2xl font-americana font-bold mb-4 text-[#8a459f] ">
 								Our Details
 							</h2>
-		
 
 							<div className="space-y-5">
 								{/* Address */}
@@ -190,8 +189,6 @@ export default function ContactPage() {
 									</div>
 								</div>
 
-								
-
 								{/* Contact */}
 								<div className="flex items-start">
 									<span className="text-gray-800 mr-3 text-xl">&#x2709;</span>{" "}
@@ -208,7 +205,7 @@ export default function ContactPage() {
 											<br />
 											Email:{" "}
 											<span className="font-semibold text-gray-800">
-												 Info@RiskyDress.com
+												Info@RiskyDress.com
 											</span>
 										</p>
 									</div>

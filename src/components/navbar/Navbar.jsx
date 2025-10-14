@@ -42,19 +42,19 @@ export default function Navbar() {
 							icon="akar-icons:facebook-fill"
 							width="20"
 							height="20"
-							className="text-white hover:text-gray-300 transition"
+							className="text-white hidden hover:text-gray-300 transition"
 						/>
 						<Icon
 							icon="ri:instagram-fill"
 							width="22"
 							height="22"
-							className="text-white hover:text-gray-300 transition"
+							className="hidden text-white hover:text-gray-300 transition"
 						/>
 						<Icon
 							icon="iconoir:tiktok-solid"
 							width="22"
 							height="22"
-							className="text-white hover:text-gray-300 transition"
+							className="hidden text-white hover:text-gray-300 transition"
 						/>
 					</div>
 
@@ -68,13 +68,12 @@ export default function Navbar() {
 						</Link>
 
 						{/* ✅ Show search icon only if NOT about/contact */}
-						
-							<button
-								onClick={() => setShowSearch(true)}
-								className="text-white hover:text-gray-300 transition md:block">
-								<Icon icon="bx:search-alt" width="24" height="24" />
-							</button>
-						
+
+						<button
+							onClick={() => setShowSearch(true)}
+							className="text-white hover:text-gray-300 transition md:block">
+							<Icon icon="bx:search-alt" width="24" height="24" />
+						</button>
 					</div>
 				</div>
 

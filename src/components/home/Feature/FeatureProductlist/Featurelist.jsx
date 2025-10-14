@@ -14,7 +14,7 @@ export default function Featurelist({ data, count, show = "yes" }) {
 					count === 1 ? " block  md:flex lg:flex gap-5" : "w-full"
 				}`}>
 				<Link
-					to={`/product/id/${data.style}`}
+					to={`/Gowns/id/${data.style}`}
 					state={{
 						product: data,
 						url: `https://demo.riskydress.com/images/${data.year}/Risky/`,

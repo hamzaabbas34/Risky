@@ -103,17 +103,14 @@ export default function Collections({ data }) {
 								appreciate timeless sophistication.
 							</p>
 							<div className="space-y-3 mb-8">
-								{[
-									"Premium silk & satin fabrics",
-									"Hand-finished details",
-									"Custom tailoring available",
-									"Sustainable materials",
-								].map((feature, index) => (
-									<div key={index} className="flex items-center space-x-3">
-										<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-										<span className="font-sans text-gray-700">{feature}</span>
-									</div>
-								))}
+								{["Premium silk & satin fabrics", "Hand-finished details"].map(
+									(feature, index) => (
+										<div key={index} className="flex items-center space-x-3">
+											<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+											<span className="font-sans text-gray-700">{feature}</span>
+										</div>
+									)
+								)}
 							</div>
 						</div>
 
@@ -141,7 +138,7 @@ export default function Collections({ data }) {
 							onScroll={updateArrowVisibility}>
 							{collections.map((collection, index) => (
 								<Link
-									to={`/product/id/${collection.style}`}
+									to={`/Gowns/id/${collection.style}`}
 									state={{
 										product: collection,
 										url: `https://demo.riskydress.com/images/${collection.year}/Risky/`,
@@ -183,13 +180,6 @@ export default function Collections({ data }) {
 													/>
 												</div>
 											</Link>
-										</div>
-
-										{/* Badge */}
-										<div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-											<span className="font-sans text-xs font-medium text-gray-900 uppercase tracking-wide">
-												Collection
-											</span>
 										</div>
 									</div>
 									{/* Info */}

@@ -93,9 +93,7 @@ export default function ViewProduct() {
 					{/* Image Gallery (Col 1-7) */}
 					<div className="lg:col-span-7 space-y-8">
 						{/* Main Image with Zoom Effect */}
-						<div
-							className="relative overflow-hidden rounded-xl shadow-lg border border-gray-100 bg-gray-50"
-							style={{ height: "70vh", minHeight: "900px" }}>
+						<div className="relative overflow-hidden rounded-xl xl:h-[800px]  md:h-[1100px] sm:h-[800px] h-[600px] shadow-lg border border-gray-100 bg-gray-50">
 							{/* Image Container for Mouse Events */}
 							<div
 								ref={imageRef}
@@ -108,7 +106,7 @@ export default function ViewProduct() {
 								<img
 									src={url + product.images[selectedImage]}
 									alt={product.style}
-									className="w-full h-[900px] object-cover  object-top   transition-opacity duration-500"
+									className="w-full xl:h-[800px]  md:h-[1100px] sm:h-[800px]  h-[600px] object-cover  object-bottom   transition-opacity duration-500"
 								/>
 
 								{/* Zoom Lens/Overlay */}
@@ -123,7 +121,7 @@ export default function ViewProduct() {
 										backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
 										pointerEvents: "none",
 										// Subtle lens style with a border
-										border: isZoomActive ? `2px solid ${ACCENT_COLOR}` : "none",
+										border: isZoomActive ? `0px solid ${ACCENT_COLOR}` : "none",
 									}}
 								/>
 							</div>
@@ -139,7 +137,7 @@ export default function ViewProduct() {
 
 						{/* Thumbnail Grid */}
 						{product.images.length > 1 && (
-							<div className="grid grid-cols-5 gap-4">
+							<div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4">
 								{product.images.map((img, i) => (
 									<div
 										key={i}

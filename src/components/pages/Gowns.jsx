@@ -83,7 +83,7 @@ export default function Gowns() {
 					<div className=" py-5  px-6 sm:px-10 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 						{currentItems.map((item, index) => (
 							<Link
-								to={`/product/id/${item.style}`}
+								to={`/Gowns/id/${item.style}`}
 								state={{
 									product: item,
 									url: `https://demo.riskydress.com/images/${item.year}/Risky/`,

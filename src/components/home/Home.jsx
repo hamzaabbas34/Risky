@@ -41,7 +41,7 @@ export default function Home() {
 
 					<img
 						src="https://demo.riskydress.com/images/2026/Risky/RS13%20%283%29.jpg"
-						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top lg:block hidden "
+						className="w-full sm-h-[700px] h-[600px] md:h-[800px] object-cover object-top  "
 						alt=""
 					/>
 					<video

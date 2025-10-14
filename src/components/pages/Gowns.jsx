@@ -74,7 +74,7 @@ export default function Gowns() {
 		<div className="">
 			<Navbar data={data.products} />
 			<h1 className="mt-[200px] text-5xl font-extrabold font-americana text-center mb-16 text-white bg-[#8a459f] bg-opacity-80 py-20  tracking-tight">
-				Gowns Collection <span style={{ color: "white" }}></span>
+				Risky Collection <span style={{ color: "white" }}></span>
 			</h1>
 
 			{products && products.length > 0 ? (

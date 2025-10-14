@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import { Icon } from "@iconify/react";
@@ -26,6 +26,9 @@ export default function ViewProduct() {
 	const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
 	const [isZoomActive, setIsZoomActive] = useState(false);
 	const imageRef = useRef(null);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const handleMouseMove = (e) => {
 		if (!imageRef.current) return;
@@ -93,7 +96,7 @@ export default function ViewProduct() {
 					{/* Image Gallery (Col 1-7) */}
 					<div className="lg:col-span-7 space-y-8">
 						{/* Main Image with Zoom Effect */}
-						<div className="relative overflow-hidden rounded-xl xl:h-[800px]  md:h-[1100px] sm:h-[800px] h-[600px] shadow-lg border border-gray-100 bg-gray-50">
+						<div className="relative overflow-hidden rounded-xl xl:h-[900px]  md:h-[1100px] sm:h-[800px] h-[600px] shadow-lg border border-gray-100 bg-gray-50">
 							{/* Image Container for Mouse Events */}
 							<div
 								ref={imageRef}
@@ -106,7 +109,7 @@ export default function ViewProduct() {
 								<img
 									src={url + product.images[selectedImage]}
 									alt={product.style}
-									className="w-full xl:h-[800px]  md:h-[1100px] sm:h-[800px]  h-[600px] object-cover  object-bottom   transition-opacity duration-500"
+									className="w-full xl:h-[900px]  md:h-[1100px] sm:h-[800px]  h-[600px] object-cover  object-bottom   transition-opacity duration-500"
 								/>
 
 								{/* Zoom Lens/Overlay */}

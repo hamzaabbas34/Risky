@@ -48,7 +48,7 @@ export default function Navbar() {
 							icon="ri:instagram-fill"
 							width="22"
 							height="22"
-							className="hidden text-white hover:text-gray-300 transition"
+							className=" text-white hover:text-gray-300 transition"
 						/>
 						<Icon
 							icon="iconoir:tiktok-solid"

@@ -60,12 +60,7 @@ export default function Navbar() {
 
 					{/* User Actions */}
 					<div className="flex items-center gap-3">
-						<Link
-							to="https://market.riskydress.com/"
-							className="flex items-center gap-1 text-white hover:text-gray-300 transition">
-							<Icon icon="qlementine-icons:user-16" width="20" height="20" />
-							<span className="text-sm font-medium">RETAILER LOGIN</span>
-						</Link>
+					
 
 						{/* ✅ Show search icon only if NOT about/contact */}
 
@@ -111,6 +106,13 @@ export default function Navbar() {
 					<li>
 						<Link to="/contact" className="hover:text-[#8a459f]">
 							Contact Us
+						</Link>
+					</li>
+					<li className="text-[#8a459f]  hover:text-white bg-white  hover:bg-[#8a459f] border-[2px] border-[#8a459f] hover:border-white px-3 py-2 rounded-md transition-all duration-300">
+						<Link
+							to="https://market.riskydress.com/"
+							className="flex items-center gap-">
+							<span className="text-sm font-medium">RETAILER LOGIN</span>
 						</Link>
 					</li>
 				</ul>

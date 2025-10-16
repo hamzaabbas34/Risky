@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 export default function Footer() {
 	useEffect(() => {
@@ -38,7 +39,7 @@ export default function Footer() {
 					data-aos="fade-left"
 					className="text-white font-Jost-Regular md:px-5 lg:px-5 flex flex-col gap-2 py-6 md:py-10 lg:py-14">
 					<h2 className="font-lora mb-2 font-medium text-[20px]">
-						Store Links
+						Website Links
 					</h2>
 					<p className="font-poppins">
 						<Link
@@ -79,6 +80,14 @@ export default function Footer() {
 							Contact Us
 						</Link>
 					</p>
+					<p className=" border-[1px] border-white w-fit p-2 rounded-md">
+						<Link
+							to="https://market.riskydress.com/"
+							className="flex items-center gap-1 text-white hover:text-gray-300 transition">
+							<Icon icon="qlementine-icons:user-16" width="20" height="20" />
+							<span className="text-sm font-medium">RETAILER LOGIN</span>
+						</Link>
+					</p>
 				</div>
 
 				{/* Social Section */}
@@ -89,10 +98,10 @@ export default function Footer() {
 						Social Links
 					</h2>
 					<p className="font-poppins hover:bg-white hover:bg-opacity-25 py-1 px-2 rounded transition-all duration-300 cursor-default">
-						Risky@gmail.com
+						Info@RiskyDress.com
 					</p>
 					<p className="font-poppins hover:bg-white hover:bg-opacity-25 py-1 px-2 rounded transition-all duration-300 cursor-default">
-						+11 1234 5678
+						450-818-7078
 					</p>
 				</div>
 			</div>

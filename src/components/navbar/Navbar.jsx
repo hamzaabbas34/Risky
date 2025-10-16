@@ -37,31 +37,19 @@ export default function Navbar() {
 					</button>
 
 					{/* Social Media Icons */}
-					<div className="hidden md:flex gap-3 items-center">
+					<Link
+						to="https://www.instagram.com/riskydress?igsh=MXhhdXF1aHk0Z3ZmcA=="
+						className="hidden md:flex gap-3 items-center">
 						<Icon
-							icon="akar-icons:facebook-fill"
-							width="20"
-							height="20"
-							className="text-white hidden hover:text-gray-300 transition"
+							icon="mingcute:instagram-fill"
+							width="25"
+							height="25"
+							color="white"
 						/>
-						<Icon
-							icon="ri:instagram-fill"
-							width="22"
-							height="22"
-							className=" text-white hover:text-gray-300 transition"
-						/>
-						<Icon
-							icon="iconoir:tiktok-solid"
-							width="22"
-							height="22"
-							className="hidden text-white hover:text-gray-300 transition"
-						/>
-					</div>
+					</Link>
 
 					{/* User Actions */}
 					<div className="flex items-center gap-3">
-					
-
 						{/* ✅ Show search icon only if NOT about/contact */}
 
 						<button

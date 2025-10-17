@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../Footer/Footer";
 
@@ -10,6 +10,8 @@ export default function Gowns() {
 	const [data, setData] = useState({ products: [] }); // Initialize as object with products array
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const parms = useParams();
+	const year = parms.year;
 	// NEW STATE for pagination
 	const [currentPage, setCurrentPage] = useState(1);
 
@@ -73,8 +75,8 @@ export default function Gowns() {
 	return (
 		<div className="">
 			<Navbar data={data.products} />
-			<h1 className="mt-[200px] text-5xl font-extrabold font-americana text-center mb-16 text-white bg-[#8a459f] bg-opacity-80 py-20  tracking-tight">
-				Risky Collection <span style={{ color: "white" }}></span>
+			<h1 className="lg:mt-[200px] mt-[140px] text-5xl font-extrabold font-americana text-center mb-16 text-white bg-[#8a459f] bg-opacity-80 py-20  tracking-tight">
+				Risky {year} Collection <span style={{ color: "white" }}></span>
 			</h1>
 
 			{products && products.length > 0 ? (

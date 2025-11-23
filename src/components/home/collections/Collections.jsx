@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "aos/dist/aos.css";
 import "./collection.css";
 
-export default function Collections({ data }) {
+export default function Collections({ data, latestYear }) {
 	const scrollContainerRef = useRef(null);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
 	const [showRightArrow, setShowRightArrow] = useState(true);
@@ -76,12 +76,19 @@ export default function Collections({ data }) {
 		? data
 				// 1. FILTER: Keep only items where viewInfront is true
 				.filter((item) => item.viewInfront === true)
-				// 2. RANDOMIZE: Shuffle the filtered results
-				.sort(() => 0.5 - Math.random())
-				// 3. LIMIT: Take only the first 3 (or fewer if fewer are featured)
+				// 2. SORT: Prioritize 2026 products first, then randomize within same year
+				.sort((a, b) => {
+					// First, sort by year (2026 first, then descending)
+					if (a.year === 2026 && b.year !== 2026) return -1;
+					if (a.year !== 2026 && b.year === 2026) return 1;
+					if (a.year !== b.year) return b.year - a.year; // Descending for other years
+
+					// If same year, randomize
+					return 0.5 - Math.random();
+				})
+				// 3. LIMIT: Take only the first 5 (or fewer if fewer are featured)
 				.slice(0, 5)
 		: [];
-
 	return (
 		<div className="mb-28 px-4 md:px-12 lg:px-20">
 			{/* Section Header */}
@@ -105,7 +112,7 @@ export default function Collections({ data }) {
 								Premiere Gowns Collection
 							</h3>
 							<p className="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-								Experience unparalleled elegance with our 2026 Premiere
+								Experience unparalleled elegance with our {latestYear} Premiere
 								Collection. Each gown is meticulously crafted with premium
 								fabrics and attention to detail, designed for those who
 								appreciate timeless sophistication.
@@ -146,7 +153,7 @@ export default function Collections({ data }) {
 							onScroll={updateArrowVisibility}>
 							{collections.map((collection, index) => (
 								<Link
-									to={`/Gowns/2026`}
+									to={`/Gowns/${latestYear}`}
 									state={{
 										product: collection,
 									}}
@@ -158,7 +165,10 @@ export default function Collections({ data }) {
 									{/* Image */}
 									<div className="relative overflow-hidden rounded-2xl shadow-lg mb-4 bg-gray-100">
 										<img
-											src={"https://admin.monsinidress.com/" + collection.images?.[0]}
+											src={
+												"https://admin.monsinidress.com/" +
+												collection.images?.[0]
+											}
 											alt={collection.style}
 											className="w-full h-[400px] lg:h-[480px] object-cover transition-all object-top  duration-700 group-hover:scale-105"
 										/>

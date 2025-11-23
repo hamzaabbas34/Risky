@@ -142,6 +142,7 @@ const dummy = [
 ];
 export default function Home() {
 	const [data, setdata] = useState(dummy);
+	const [year, setYear] = useState([2026]);
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -164,6 +165,12 @@ export default function Home() {
 				console.log("API Response:", data);
 				if (data.data && data.data.products) {
 					setdata(data.data.products);
+					const yearData = data.data.year;
+					if (Array.isArray(yearData)) {
+						setYear(yearData);
+					} else {
+						setYear([yearData || new Date().getFullYear()]);
+					}
 				} else {
 					setdata(dummy);
 				}
@@ -175,8 +182,11 @@ export default function Home() {
 		fetchData();
 	}, []);
 
-	// const latestyear = [...years].sort((a, b) => b - a);
-	console.log(data);
+	const latestYear =
+		Array.isArray(year) && year.length > 0
+			? Math.max(...year)
+			: year || new Date().getFullYear();
+	console.log("Latest Year:", latestYear);
 	return (
 		<div className="relative overflow-hidden">
 			<Navbar data={data} />
@@ -231,9 +241,9 @@ export default function Home() {
 				</div>
 			</div>
 
-			<ExploreCollection data={data} />
-			<Collections data={data} />
-			<Features data={data} />
+			<ExploreCollection data={data} latestYear={latestYear} />
+			<Collections data={data} latestYear={latestYear} />
+			<Features data={data} latestYear={latestYear} />
 			<Shapingd />
 			<Footer />
 		</div>

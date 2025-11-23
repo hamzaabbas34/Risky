@@ -72,7 +72,15 @@ export default function Collections({ data }) {
 	}, [data]);
 
 	// Show more items so scrolling actually happens
-	const collections = data.slice(0, 8);
+	const collections = Array.isArray(data)
+		? data
+				// 1. FILTER: Keep only items where viewInfront is true
+				.filter((item) => item.viewInfront === true)
+				// 2. RANDOMIZE: Shuffle the filtered results
+				.sort(() => 0.5 - Math.random())
+				// 3. LIMIT: Take only the first 3 (or fewer if fewer are featured)
+				.slice(0, 5)
+		: [];
 
 	return (
 		<div className="mb-28 px-4 md:px-12 lg:px-20">
@@ -138,10 +146,9 @@ export default function Collections({ data }) {
 							onScroll={updateArrowVisibility}>
 							{collections.map((collection, index) => (
 								<Link
-									to={`/Gowns/id/${collection.style}`}
+									to={`/Gowns/2026`}
 									state={{
 										product: collection,
-										url: `https://demo.riskydress.com/images/${collection.year}/Risky/`,
 									}}
 									key={collection.id || index}
 									className="flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[380px]
@@ -151,10 +158,7 @@ export default function Collections({ data }) {
 									{/* Image */}
 									<div className="relative overflow-hidden rounded-2xl shadow-lg mb-4 bg-gray-100">
 										<img
-											src={
-												"https://demo.riskydress.com/images/2026/Risky/" +
-												collection.images?.[0]
-											}
+											src={"https://admin.monsinidress.com/" + collection.images?.[0]}
 											alt={collection.style}
 											className="w-full h-[400px] lg:h-[480px] object-cover transition-all object-top  duration-700 group-hover:scale-105"
 										/>

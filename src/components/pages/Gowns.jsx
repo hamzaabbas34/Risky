@@ -3,83 +3,131 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../Footer/Footer";
 
-// Define items per page
-const ITEMS_PER_PAGE = 12; // You can adjust this number
+// Define items per page (Still kept for the API request limit)
+const ITEMS_PER_PAGE = 12;
 
 export default function Gowns() {
-	const [data, setData] = useState({ products: [] }); // Initialize as object with products array
-	const [loading, setLoading] = useState(true);
+	// Initialize data state to hold products for the *current page*
+	const [data, setData] = useState({ products: [] });
+
 	const [error, setError] = useState(null);
 	const parms = useParams();
 	const year = parms.year;
-	// NEW STATE for pagination
+
+	// State for pagination data received from the API
+	const [pagination, setPagination] = useState({
+		total: 0,
+		totalPages: 0,
+		hasNextPage: false,
+		hasPrevPage: false,
+	});
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const PRIMARY_COLOR = "#8a459f";
 	const HOVER_COLOR = "rgb(219 39 119 / 0.8)";
 
-	// --- Data Fetching Logic (Kept as is) ---
+	console.log(year);
+
+	// --- Data Fetching Logic (Updated to be cleaner) ---
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				setLoading(true);
-				// Reset currentPage on new year fetch
-				setCurrentPage(1);
-				const response = await fetch(`/risky.json`);
+				setError(null); // Clear previous errors
+
+				// Build query parameters with pagination
+				const params = new URLSearchParams({
+					brand: "Risky",
+					category: `Gowns`,
+					year: year,
+					page: currentPage.toString(),
+					limit: ITEMS_PER_PAGE.toString(),
+				});
+
+				const apiUrl = `${"https://admin.monsinidress.com"}/api/products?${params}`;
+
+				console.log("Request URL:", apiUrl);
+
+				const response = await fetch(apiUrl);
+
 				if (!response.ok) throw new Error("Failed to fetch data");
+
 				const result = await response.json();
-				setData(result);
-				console.log("Fetched data:", result);
+
+				console.log("API Response 123:", result);
+
+				// Check if the API response has the expected structure
+				if (
+					result.success &&
+					result.data &&
+					Array.isArray(result.data.products)
+				) {
+					// Set data.products, which contains the items for the current page
+					setData(result.data);
+
+					// Set the pagination metadata
+					setPagination(
+						result.data.pagination || {
+							total: 0,
+							totalPages: 0,
+							hasNextPage: false,
+							hasPrevPage: false,
+						}
+					);
+					console.log("Fetched data:", result.data.products);
+				} else {
+					// Handle cases where API returns success but data structure is wrong or products is missing
+					throw new Error("Invalid or missing data structure from API");
+				}
 			} catch (err) {
+				console.error("Fetch error:", err);
 				setError(err.message);
-				setData({ products: [] }); // Set empty products array on error
+				setData({ products: [] }); // Reset data on error
+				setPagination({
+					total: 0,
+					totalPages: 0,
+					hasNextPage: false,
+					hasPrevPage: false,
+				});
 			} finally {
-				setLoading(false);
 			}
 		};
 		fetchData();
-	}, []);
+	}, [year, currentPage]);
 	// ------------------------------------------
 
-	// --- Pagination Logic ---
-	// Use data.products instead of data
-	const products = useMemo(() => {
+	// --- Pagination Logic (Simplified) ---
+	// The items for the current page are already fetched into data.products.
+	const currentItems = useMemo(() => {
 		return data?.products || [];
 	}, [data?.products]);
-	// Calculate the total number of pages
-	const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
-	// Get the items for the current page
-	const currentItems = useMemo(() => {
-		const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-		const endIndex = startIndex + ITEMS_PER_PAGE;
-		return products.slice(startIndex, endIndex);
-	}, [products, currentPage]);
+	// Total pages should be read directly from the API response
+	const totalPages = pagination.totalPages;
+	// -------------------------------------
 
 	// Handler to change page
 	const handlePageChange = (page) => {
-		if (page > 0 && page <= totalPages) {
+		// Use pagination.totalPages from the API response for boundary check
+		if (page > 0 && page <= pagination.totalPages) {
 			setCurrentPage(page);
-			// Optional: Scroll to the top of the content when page changes
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}
 	};
 	// -------------------------
-
-	if (loading)
-		return <div className="text-center mt-20 text-gray-600">Loading...</div>;
 
 	if (error)
 		return <div className="text-center mt-20 text-red-500">Error: {error}</div>;
 
 	return (
 		<div className="">
-			<Navbar data={data.products} />
+			{/* Pass currentItems to Navbar if it expects the displayed items */}
+			<Navbar data={currentItems} />
 			<h1 className="lg:mt-[200px] mt-[140px] text-5xl font-extrabold font-americana text-center mb-16 text-white bg-[#8a459f] bg-opacity-80 py-20  tracking-tight">
 				Risky {year} Collection <span style={{ color: "white" }}></span>
 			</h1>
 
-			{products && products.length > 0 ? (
+			{/* Check if currentItems (the fetched products for the page) have any length */}
+			{currentItems && currentItems.length > 0 ? (
 				<>
 					{/* Display the current page items */}
 					<div className=" py-5  px-6 sm:px-10 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -88,37 +136,20 @@ export default function Gowns() {
 								to={`/Gowns/id/${item.style}`}
 								state={{
 									product: item,
-									url: `https://demo.riskydress.com/images/${item.year}/Risky/`,
 								}}
 								key={index}
 								className="bg-white shadow-lg overflow-hidden group border-b-4 border-transparent hover:border-b-4 transition-all duration-300 transform hover:shadow-xl"
 								style={{ borderBottomColor: PRIMARY_COLOR }}>
 								<div className="relative overflow-hidden">
 									<img
-										src={`https://demo.riskydress.com/images/${item.year}/Risky/${item.images?.[0]}`}
+										src={`https://admin.monsinidress.com/${item.images?.[0]}`}
 										alt={item.style}
 										className="w-full h-[440px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 										<div className="p-4 w-full text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
-											<div className="flex justify-between items-center mb-2">
-												<h2 className="font-bold text-xl drop-shadow-md">
-													{item.style}
-												</h2>
-												<p
-													className="font-extrabold text-lg"
-													style={{
-														color: PRIMARY_COLOR,
-														filter: "brightness(1.5)",
-													}}>
-													{item.price}
-												</p>
-											</div>
 											<div className="flex justify-between items-center text-sm">
-												<p className="text-gray-200">
-													Sizes:{" "}
-													<span className="font-medium">{item.sizeRange}</span>
-												</p>
+												<p className="text-gray-200">{item.style}</p>
 												<button
 													className="px-4 py-1.5 rounded-full text-sm font-semibold transition-colors"
 													style={{
@@ -147,31 +178,38 @@ export default function Gowns() {
 					<div className="flex justify-center items-center my-10 space-x-2 md:flex-row sm:flex-col flex-col gap-4">
 						<button
 							onClick={() => handlePageChange(currentPage - 1)}
-							disabled={currentPage === 1}
+							// Disable based on API's totalPages
+							disabled={currentPage === 1 || totalPages === 0}
 							className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${
-								currentPage === 1
+								currentPage === 1 || totalPages === 0
 									? "bg-gray-200 text-gray-500 cursor-not-allowed"
 									: "text-white"
 							}`}
 							style={{
-								backgroundColor: currentPage !== 1 ? PRIMARY_COLOR : undefined,
+								backgroundColor:
+									currentPage !== 1 && totalPages !== 0
+										? PRIMARY_COLOR
+										: undefined,
 							}}
 							onMouseOver={(e) =>
 								currentPage !== 1 &&
+								totalPages !== 0 &&
 								(e.currentTarget.style.backgroundColor = HOVER_COLOR)
 							}
 							onMouseOut={(e) =>
 								currentPage !== 1 &&
+								totalPages !== 0 &&
 								(e.currentTarget.style.backgroundColor = PRIMARY_COLOR)
 							}>
 							Previous
 						</button>
 
-						{/* Dynamic Page Buttons (Optional: display a few surrounding pages) */}
+						{/* Dynamic Page Buttons */}
 						<div className="flex gap-2">
+							{/* Generate buttons based on API's totalPages */}
 							{[...Array(totalPages).keys()].map((page) => {
 								const pageNum = page + 1;
-								// Basic logic to show current, previous, and next page buttons
+								// Basic logic to show current, previous, and next page buttons, plus first/last
 								if (
 									pageNum === 1 ||
 									pageNum === totalPages ||
@@ -183,7 +221,7 @@ export default function Gowns() {
 											onClick={() => handlePageChange(pageNum)}
 											className={`w-10 h-10 rounded-full font-semibold transition-colors duration-300 ${
 												pageNum === currentPage
-													? "text-white shadow-md" // Distinct color for current page
+													? "text-white shadow-md"
 													: "bg-gray-100 text-gray-700 hover:bg-gray-200"
 											}`}
 											style={
@@ -219,22 +257,27 @@ export default function Gowns() {
 
 						<button
 							onClick={() => handlePageChange(currentPage + 1)}
-							disabled={currentPage === totalPages}
+							// Disable based on API's totalPages
+							disabled={currentPage === totalPages || totalPages === 0}
 							className={`px-4 py-2 rounded-full md:text-sm font-semibold transition-colors duration-300 ${
-								currentPage === totalPages
+								currentPage === totalPages || totalPages === 0
 									? "bg-gray-200 text-gray-500 cursor-not-allowed"
 									: "text-white"
 							}`}
 							style={{
 								backgroundColor:
-									currentPage !== totalPages ? PRIMARY_COLOR : undefined,
+									currentPage !== totalPages && totalPages !== 0
+										? PRIMARY_COLOR
+										: undefined,
 							}}
 							onMouseOver={(e) =>
 								currentPage !== totalPages &&
+								totalPages !== 0 &&
 								(e.currentTarget.style.backgroundColor = HOVER_COLOR)
 							}
 							onMouseOut={(e) =>
 								currentPage !== totalPages &&
+								totalPages !== 0 &&
 								(e.currentTarget.style.backgroundColor = PRIMARY_COLOR)
 							}>
 							Next
@@ -243,7 +286,9 @@ export default function Gowns() {
 				</>
 			) : (
 				<div className="text-center text-gray-600 mt-20 p-10 bg-gray-50 rounded-xl">
-					<p className="text-xl font-semibold mb-8">No data available.</p>
+					<p className="text-xl font-semibold mb-8">
+						No {year} data available for Risky gowns.
+					</p>
 					<Link
 						to="/Gowns"
 						className="inline-block px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-300 shadow-lg"
@@ -254,7 +299,7 @@ export default function Gowns() {
 						onMouseOut={(e) =>
 							(e.currentTarget.style.backgroundColor = PRIMARY_COLOR)
 						}>
-						Back to Collections
+						Back to All Gowns
 					</Link>
 				</div>
 			)}

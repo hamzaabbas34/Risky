@@ -21,7 +21,6 @@ const ProductInfoBlock = ({ title, children }) => (
 export default function ViewProduct() {
 	const location = useLocation();
 	const product = location.state?.product;
-	const url = location.state?.url;
 	const [selectedImage, setSelectedImage] = useState(0);
 	const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
 	const [isZoomActive, setIsZoomActive] = useState(false);
@@ -107,7 +106,7 @@ export default function ViewProduct() {
 								style={{ position: "relative" }}>
 								{/* Main Image */}
 								<img
-									src={url + product.images[selectedImage]}
+									src={"https://admin.monsinidress.com/" + product.images[selectedImage]}
 									alt={product.style}
 									className="w-full xl:h-[900px]  md:h-[1100px] sm:h-[800px]  h-[600px] object-cover  object-bottom   transition-opacity duration-500"
 								/>
@@ -118,7 +117,7 @@ export default function ViewProduct() {
 									style={{
 										opacity: isZoomActive ? 1 : 0,
 										backgroundImage: `url(${
-											url + product.images[selectedImage]
+											"https://admin.monsinidress.com/" + product.images[selectedImage]
 										})`,
 										backgroundSize: "200%", // Double the size for a 2x zoom
 										backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
@@ -154,7 +153,7 @@ export default function ViewProduct() {
 											setIsZoomActive(false);
 										}}>
 										<img
-											src={url + img}
+											src={"https://admin.monsinidress.com/" + img}
 											alt={`${product.style} view ${i + 1}`}
 											className="w-full h-full object-cover object-top  transition-transform duration-300 group-hover:scale-105"
 										/>
@@ -171,9 +170,7 @@ export default function ViewProduct() {
 							<h1 className="text-4xl font-normal text-gray-900 tracking-tight mb-2">
 								{product.style}
 							</h1>
-							<p className="text-3xl font-light text-gray-700">
-								{product.price}
-							</p>
+							
 						</div>
 
 						{/* Divider */}
@@ -186,7 +183,7 @@ export default function ViewProduct() {
 							</ProductInfoBlock>
 
 							<ProductInfoBlock title="Available Sizes">
-								<p>{product.sizeRange}</p>
+								<p>{product.size}</p>
 							</ProductInfoBlock>
 
 							{/* Colors */}

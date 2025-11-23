@@ -9,20 +9,173 @@ import { useEffect, useState } from "react";
 import video1 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.49.mp4";
 import video2 from "../../assets/video/WhatsApp Video 2025-10-10 at 17.06.51.mp4";
 // here
+
+const dummy = [
+	{
+		_id: "69087073c80632982d5fd502",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP25",
+		availability: "No",
+		category: "Prom 2025",
+		style: "40057",
+		price: 285,
+		colors: ["Red", "Blue"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image1.jpg", "image2.jpg"],
+		createdAt: "2025-11-03T09:05:55.379+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd503",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP26",
+		availability: "Yes",
+		category: "Prom 2025",
+		style: "40058",
+		price: 295,
+		colors: ["Black", "White"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image3.jpg", "image4.jpg"],
+		createdAt: "2025-11-04T10:15:22.123+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd504",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP27",
+		availability: "No",
+		category: "Prom 2025",
+		style: "40059",
+		price: 275,
+		colors: ["Green", "Yellow"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image5.jpg", "image6.jpg"],
+		createdAt: "2025-11-05T11:20:33.456+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd505",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP28",
+		availability: "Yes",
+		category: "Prom 2025",
+		style: "40060",
+		price: 310,
+		colors: ["Purple", "Pink"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image7.jpg", "image8.jpg"],
+		createdAt: "2025-11-06T12:25:44.789+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd506",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP29",
+		availability: "No",
+		category: "Prom 2025",
+		style: "40061",
+		price: 265,
+		colors: ["Orange", "Brown"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image9.jpg", "image10.jpg"],
+		createdAt: "2025-11-07T13:30:55.111+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd507",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP30",
+		availability: "Yes",
+		category: "Prom 2025",
+		style: "40062",
+		price: 320,
+		colors: ["Gray", "Silver"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image11.jpg", "image12.jpg"],
+		createdAt: "2025-11-08T14:35:66.222+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd508",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP31",
+		availability: "No",
+		category: "Prom 2025",
+		style: "40063",
+		price: 280,
+		colors: ["Gold", "Beige"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image13.jpg", "image14.jpg"],
+		createdAt: "2025-11-09T15:40:77.333+00:00",
+		__v: 0,
+	},
+	{
+		_id: "69087073c80632982d5fd509",
+		brand: "Monsini",
+		year: 2025,
+		versionName: "SP32",
+		availability: "Yes",
+		category: "Prom 2025",
+		style: "40064",
+		price: 300,
+		colors: ["Navy", "Maroon"],
+		size: "0-24",
+		viewInfront: true,
+		images: ["image15.jpg", "image16.jpg"],
+		createdAt: "2025-11-10T16:45:88.444+00:00",
+		__v: 0,
+	},
+];
 export default function Home() {
-	const [data, setData] = useState([]);
+	const [data, setdata] = useState(dummy);
 	useEffect(() => {
-		fetch("/risky.json") // 👈 fetches from public folder
-			.then((response) => {
+		const fetchData = async () => {
+			try {
+				const apiUrl = `https://admin.monsinidress.com/api/products/brand`;
+				console.log("Fetching from:", apiUrl);
+
+				const response = await fetch(apiUrl, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ brand: "Risky" }),
+				});
+
 				if (!response.ok) {
-					throw new Error("Network response was not ok");
+					throw new Error(`HTTP error! status: ${response.status}`);
 				}
-				return response.json();
-			})
-			.then((data) => setData(data.products))
-			.catch((error) => console.error("Error fetching data:", error));
+
+				const data = await response.json();
+				console.log("API Response:", data);
+				if (data.data && data.data.products) {
+					setdata(data.data.products);
+				} else {
+					setdata(dummy);
+				}
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		};
+
+		fetchData();
 	}, []);
 
+	// const latestyear = [...years].sort((a, b) => b - a);
 	console.log(data);
 	return (
 		<div className="relative overflow-hidden">

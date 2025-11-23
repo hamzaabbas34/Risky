@@ -17,7 +17,6 @@ export default function Featurelist({ data, count, show = "yes" }) {
 					to={`/Gowns/id/${data.style}`}
 					state={{
 						product: data,
-						url: `https://demo.riskydress.com/images/${data.year}/Risky/`,
 					}}>
 					<div
 						className={`relative ${
@@ -26,45 +25,18 @@ export default function Featurelist({ data, count, show = "yes" }) {
 								: "w-full aspect-[4/5]"
 						}`}>
 						<img
-							src={
-								"https://demo.riskydress.com/images/2026/Risky/" +
-								data.images[0]
-							}
+							src={"https://admin.monsinidress.com/" + data.images[0]}
 							alt={data.style}
 							className="w-full h-full object-cover  object-top img1 z-1 opacity-1"
 						/>
 						<img
-							src={
-								"https://demo.riskydress.com/images/2026/Risky/" +
-								data.images[1]
-							}
+							src={"https://admin.monsinidress.com/" + data.images[1]}
 							alt={data.style}
 							className="myimg w-full h-full object-cover  object-top"
 						/>
 					</div>
 				</Link>
-				<div>
-					{show === "yes" && (
-						<>
-							<p className="font-Jost-Medium mt-3 font-lora">{data.style}</p>
-							{/* <p className="mt-1 font-poppins ">
-								Rs.{data.price} <span>Regular price</span>
-								<span className="opacity-40"> Rs.{data.price_final}</span>
-							</p> */}
-						</>
-					)}
-					{count === 1 && (
-						<>
-							<p className="font-Jost-Regular py-4 text-textlight hidden md:block xl:block lg:block">
-								FABRIC: Soft Slub Khaddar Includes: Shirt Color: Tie dye Size:
-								Chart Attached Fit: Regular Fit...
-							</p>
-							<button className="hidden md:block xl:block lg:block px-5 py-2 hover: bg-[#8a459f]  bg-inherit hover:text-white text-black border-2 border-black rounded-md font-Jost-Regular">
-								Select option
-							</button>
-						</>
-					)}
-				</div>
+				
 			</li>
 		</div>
 	);

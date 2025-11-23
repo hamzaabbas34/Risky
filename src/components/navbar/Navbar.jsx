@@ -893,12 +893,12 @@ export default function Navbar() {
 											navigate(`/Gowns/id/${item.style}`, {
 												state: {
 													product: item,
-													url: `https://demo.riskydress.com/images/${item.year}/Risky/`,
+										
 												},
 											});
 										}}>
 										<img
-											src={`https://demo.riskydress.com/images/${item.year}/Risky/${item.images?.[0]}`}
+											src={`https://admin.monsinidress.com/${item.images?.[0]}`}
 											alt={item.style}
 											className="w-16 h-16 object-cover object-top rounded"
 										/>

@@ -106,7 +106,10 @@ export default function ViewProduct() {
 								style={{ position: "relative" }}>
 								{/* Main Image */}
 								<img
-									src={"https://admin.monsinidress.com/" + product.images[selectedImage]}
+									src={
+										"https://admin.monsinidress.com/" +
+										product.images[selectedImage]
+									}
 									alt={product.style}
 									className="w-full xl:h-[900px]  md:h-[1100px] sm:h-[800px]  h-[600px] object-cover  object-bottom   transition-opacity duration-500"
 								/>
@@ -117,7 +120,8 @@ export default function ViewProduct() {
 									style={{
 										opacity: isZoomActive ? 1 : 0,
 										backgroundImage: `url(${
-											"https://admin.monsinidress.com/" + product.images[selectedImage]
+											"https://admin.monsinidress.com/" +
+											product.images[selectedImage]
 										})`,
 										backgroundSize: "200%", // Double the size for a 2x zoom
 										backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
@@ -170,7 +174,6 @@ export default function ViewProduct() {
 							<h1 className="text-4xl font-normal text-gray-900 tracking-tight mb-2">
 								{product.style}
 							</h1>
-							
 						</div>
 
 						{/* Divider */}
@@ -184,6 +187,10 @@ export default function ViewProduct() {
 
 							<ProductInfoBlock title="Available Sizes">
 								<p>{product.size}</p>
+							</ProductInfoBlock>
+
+							<ProductInfoBlock title="Availability">
+								<p>{product.availability}</p>
 							</ProductInfoBlock>
 
 							{/* Colors */}
